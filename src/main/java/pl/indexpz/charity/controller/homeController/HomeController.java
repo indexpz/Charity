@@ -13,6 +13,6 @@ public class HomeController {
     @GetMapping("/")
     public String prepareHome() {
         log.info("Start home/index.jsp");
-        return "home/index";
+        return "index";
     }
 }
