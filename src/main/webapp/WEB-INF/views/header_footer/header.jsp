@@ -35,8 +35,8 @@
 <%--            <li><a href="<c:url value="/views/index.jsp" context="/#steps" var="currentPage"/>"  class="btn btn--without-border">O co chodzi?</a></li>--%>
 <%--            <li><a href="${pageContext.request.contextPath}/views/index.jsp#steps"  class="btn btn--without-border">O co chodzi?</a></li>--%>
 <%--            <li><a href="<c:url value="/views/index.jsp" context="/#steps" var="currentPage"/>" class="btn btn--without-border">O co chodzi?</a></li>--%>
-            <li><a href="<jsp:element name="#steps"/>" class="btn btn--without-border">O co chodzi?</a></li>
-
+<%--            <li><a href="<jsp:element name="#steps"/>" class="btn btn--without-border">O co chodzi?</a></li>--%>
+            <li><a href="/#steps"  class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
