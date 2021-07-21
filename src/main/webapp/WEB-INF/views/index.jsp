@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-<c:import url="header_footer/header.jsp"/>
+<jsp:include page="header_footer/header.jsp"/>
 
 <section class="stats">
     <div class="container container--85">
@@ -113,7 +113,7 @@
 
 </section>
 
-<c:import url="header_footer/footer.jsp"/>
+<jsp:include page="header_footer/footer.jsp"/>
 
 
 </body>
