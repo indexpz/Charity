@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<jsp:include page="header_footer/header.jsp"/>
+<jsp:include page="header_footer/header_css.jsp"/>
+<jsp:include page="header_footer/header_main_navi.jsp"/>
 
 <section class="stats">
     <div class="container container--85">
@@ -112,7 +113,8 @@
 
 </section>
 
-<jsp:include page="header_footer/footer.jsp"/>
+<jsp:include page="header_footer/footer_main.jsp"/>
+<jsp:include page="header_footer/footer_js.jsp"/>
 
 
 </body>
