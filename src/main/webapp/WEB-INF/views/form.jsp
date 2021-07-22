@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <!DOCTYPE html>
@@ -42,24 +43,25 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+
+        <form:form action="form-confirmation.html" method="post" modelAttribute="category">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
+                    <c:forEach items="categories" var="category">
+                        <div class="form-group form-group--checkbox">
+                            <label>
+                                <input
+                                        type="checkbox"
+                                        name="categories"
+                                        value="clothes-to-use"
+                                />
+                                <span class="checkbox"></span>
+                                <span class="description">${category.name}</span>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-to-use"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span
-                        >
-                    </label>
-                </div>
+                            </label>
+                        </div>
+                    </c:forEach>
 
                 <div class="form-group form-group--checkbox">
                     <label>
@@ -101,7 +103,6 @@
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
-
 
 
             <!-- STEP 2 -->
@@ -263,7 +264,7 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 

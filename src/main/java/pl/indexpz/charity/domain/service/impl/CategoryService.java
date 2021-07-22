@@ -5,12 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Category;
 import pl.indexpz.charity.domain.repository.CategoryRepository;
-import pl.indexpz.charity.domain.service.InterfaceCategoryService;
+import pl.indexpz.charity.domain.service.CategoryServiceInterface;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor //zamiast konstruktora
-public class CategoryService implements InterfaceCategoryService {
+public class CategoryService implements CategoryServiceInterface {
 
     private final CategoryRepository categoryRepository;
 
@@ -18,6 +20,11 @@ public class CategoryService implements InterfaceCategoryService {
     @Transactional
     public Category addCategory(Category categoryToAdd) {
         return categoryRepository.save(categoryToAdd);
+    }
+
+    @Override
+    public List<Category> getCategories() {
+        return categoryRepository.findAll();
     }
 
     @Override

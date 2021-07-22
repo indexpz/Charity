@@ -6,12 +6,16 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Donation;
 import pl.indexpz.charity.domain.model.Institution;
 
+import java.util.List;
+
 @Service
 @Repository
 @Transactional
-public interface InterfaceDonationService {
+public interface DonationServiceInterface {
 
     Donation addDonation(Donation donationToAdd);
+
+    List<Donation> getDonations();
 
     Donation getDonationById(Long donationId);
 
@@ -20,4 +24,8 @@ public interface InterfaceDonationService {
     public void updateDonation(Donation donationToUpdate);
 
     public void deleteDonation(Donation donationToDelete);
+
+    int getNumberOfDonations();
+
+    int getNumberOfBags();
 }

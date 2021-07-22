@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.charity.domain.model.Category;
-import pl.indexpz.charity.domain.repository.CategoryRepository;
+import pl.indexpz.charity.domain.service.CategoryServiceInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -18,11 +18,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FormController {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryServiceInterface categoryServiceInterface;
 
     @GetMapping
     public String prepareForm(Model model) {
-        model.addAttribute("category", categoryRepository.findAll());
+        List<Category> allCategories = categoryServiceInterface.getCategories();
+        List<String> names = new ArrayList<>();
+        for (Category c : allCategories) {
+            names.add(c.getName());
+            System.out.println(c.getId() + " " + c.getName());
+        }
+        model.addAttribute("categories", allCategories);
+        log.info("" + categoryServiceInterface.getCategories());
         return "/form";
     }
 

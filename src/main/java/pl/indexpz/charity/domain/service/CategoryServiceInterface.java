@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Category;
 
+import java.util.List;
+
 @Service
 @Repository
 @Transactional
-public interface InterfaceCategoryService {
+public interface CategoryServiceInterface {
 
     Category addCategory(Category categoryToAdd);
+
+    List<Category> getCategories();
 
     Category getCategoryById(Long categoryId);
 
@@ -19,4 +23,5 @@ public interface InterfaceCategoryService {
     public void updateCategory(Category categoryToUpdate);
 
     public void deleteCategory(Category categoryToDelete);
+
 }
