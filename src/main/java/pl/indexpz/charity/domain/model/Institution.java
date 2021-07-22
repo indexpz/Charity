@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(nullable = false, unique = true)
     @NotBlank
     private String name;

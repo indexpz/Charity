@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Institution;
 import pl.indexpz.charity.domain.repository.InstitutionRepository;
-import pl.indexpz.charity.domain.service.InstitutionService;
+import pl.indexpz.charity.domain.service.InterfaceInstitutionService;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 @Service
 @RequiredArgsConstructor
-public class JpaInstitutionService implements InstitutionService {
+public class InstitutionService implements InterfaceInstitutionService {
 
     private final InstitutionRepository institutionRepository;
 
@@ -27,7 +27,7 @@ public class JpaInstitutionService implements InstitutionService {
 
     @Override
     public Institution getInstitutionByName(String institutionName) {
-        Institution institution = (Institution) institutionRepository.findInstitutionByInstitutionName(institutionName);
+        Institution institution = (Institution) institutionRepository.findInstitutionByName(institutionName);
         return institution;
     }
 

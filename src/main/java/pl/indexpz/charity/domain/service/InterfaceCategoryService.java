@@ -8,7 +8,7 @@ import pl.indexpz.charity.domain.model.Category;
 @Service
 @Repository
 @Transactional
-public interface CategoryService {
+public interface InterfaceCategoryService {
 
     Category addCategory(Category categoryToAdd);
 

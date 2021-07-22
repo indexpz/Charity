@@ -8,7 +8,7 @@ import pl.indexpz.charity.domain.model.Institution;
 @Service
 @Repository
 @Transactional
-public interface InstitutionService {
+public interface InterfaceInstitutionService {
 
     Institution addInstitution(Institution institutionToAdd);
 

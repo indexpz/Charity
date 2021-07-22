@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Category;
 import pl.indexpz.charity.domain.repository.CategoryRepository;
-import pl.indexpz.charity.domain.service.CategoryService;
+import pl.indexpz.charity.domain.service.InterfaceCategoryService;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 @Service
 @RequiredArgsConstructor //zamiast konstruktora
-public class JpaCategoryService implements CategoryService {
+public class CategoryService implements InterfaceCategoryService {
 
     private final CategoryRepository categoryRepository;
 
@@ -27,7 +27,7 @@ public class JpaCategoryService implements CategoryService {
 
     @Override
     public Category getCategoryByName(String categoryName) {
-        Category category = categoryRepository.findCategoryByCategoryName(categoryName);
+        Category category = categoryRepository.findCategoryByName(categoryName);
         return category;
     }
 

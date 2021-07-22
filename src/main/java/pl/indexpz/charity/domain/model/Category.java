@@ -8,9 +8,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name="categorys")
+@Table(name = "categorys")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +25,5 @@ public class Category {
     @Column(nullable = false, unique = true)
     @NotBlank
     private String name;
+
 }
