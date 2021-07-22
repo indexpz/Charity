@@ -23,7 +23,7 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public List<Category> getCategories() {
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 

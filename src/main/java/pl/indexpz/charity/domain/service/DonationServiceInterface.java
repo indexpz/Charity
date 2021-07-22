@@ -15,7 +15,7 @@ public interface DonationServiceInterface {
 
     Donation addDonation(Donation donationToAdd);
 
-    List<Donation> getDonations();
+    List<Donation> getAllDonations();
 
     Donation getDonationById(Long donationId);
 

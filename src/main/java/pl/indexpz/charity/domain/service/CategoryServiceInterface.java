@@ -14,7 +14,7 @@ public interface CategoryServiceInterface {
 
     Category addCategory(Category categoryToAdd);
 
-    List<Category> getCategories();
+    List<Category> getAllCategories();
 
     Category getCategoryById(Long categoryId);
 

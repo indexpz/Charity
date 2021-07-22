@@ -13,6 +13,7 @@ import pl.indexpz.charity.domain.model.Institution;
 import pl.indexpz.charity.domain.repository.CategoryRepository;
 import pl.indexpz.charity.domain.service.CategoryServiceInterface;
 import pl.indexpz.charity.domain.service.DonationServiceInterface;
+import pl.indexpz.charity.domain.service.InstitutionServiceInterface;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,7 @@ public class DataSetup {
 
     private final CategoryServiceInterface categoryServiceInterface;
     private final DonationServiceInterface donationServiceInterface;
+    private final InstitutionServiceInterface institutionServiceInterface;
 
 
     private AtomicBoolean alreadyRun = new AtomicBoolean(false);
@@ -57,6 +59,11 @@ public class DataSetup {
 //        donationServiceInterface.addDonation(new Donation(1L, "Pierwsza darowizna", 1, "Pierwsza", null, null, null));
 //        donationServiceInterface.addDonation(new Donation(2L, "Druga darowizna", 2, "Druga", null, null, null));
 //        donationServiceInterface.addDonation(new Donation(3L, "Trzecia darowizna", 3, "Trzecia", null, null, null, 2021-07-22, 1022, null));
+
+        createInstitutionIfNotExist(1L, "Fundacja \"Dbam o Zdrowie\"", "Pomoc dzieciom z ubogich rodzin.");
+        createInstitutionIfNotExist(2L, "Fundacja \"Dla dzieci\"", "Pomoc osobom znajdującym się w trudnej sytuacji życiowej.");
+        createInstitutionIfNotExist(3L, "Fundacja \"A kogo\"", "Pomoc wybudzaniu dzieci ze śpiączki.");
+        createInstitutionIfNotExist(4L, "Fundacja \"Bez domu\"", "Pomoc dla osób nie posiadających miejsca zamieszkania.");
     }
 
     private void createCategoryIfNotExist(Long id, String name) {
@@ -80,5 +87,17 @@ public class DataSetup {
 //            log.debug("Dodano Doantion do bd {}", donation);
 //        }
 //    }
+
+
+    private void createInstitutionIfNotExist(Long id, String name, String description) {
+        try {
+            categoryServiceInterface.getCategoryById(id);
+            log.debug("Institution o id {} istnieje w bazie danych. Nie potrzeba dodawać", id);
+        } catch (ResourceNotFoundException e) {
+            Institution institution = new Institution(null, name, description);
+            institutionServiceInterface.addInstitution(institution);
+            log.debug("Dodano Category do bd {}", institution);
+        }
+    }
 
 }

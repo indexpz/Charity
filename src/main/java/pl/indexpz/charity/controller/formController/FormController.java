@@ -22,14 +22,14 @@ public class FormController {
 
     @GetMapping
     public String prepareForm(Model model) {
-        List<Category> allCategories = categoryServiceInterface.getCategories();
+        List<Category> allCategories = categoryServiceInterface.getAllCategories();
         List<String> names = new ArrayList<>();
         for (Category c : allCategories) {
             names.add(c.getName());
             System.out.println(c.getId() + " " + c.getName());
         }
         model.addAttribute("categories", allCategories);
-        log.info("" + categoryServiceInterface.getCategories());
+        log.info("" + categoryServiceInterface.getAllCategories());
         return "/form";
     }
 

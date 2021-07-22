@@ -26,7 +26,7 @@ public class DonationService implements DonationServiceInterface {
     }
 
     @Override
-    public List<Donation> getDonations() {
+    public List<Donation> getAllDonations() {
         return donationRepository.findAll();
     }
 
@@ -53,13 +53,13 @@ public class DonationService implements DonationServiceInterface {
 
     @Override
     public int getNumberOfDonations() {
-        return getDonations().size();
+        return getAllDonations().size();
     }
 
     @Override
     public int getNumberOfBags() {
         int result = 0;
-        for (Donation d: getDonations()) {
+        for (Donation d: getAllDonations()) {
             result += d.getQuantity();
         }
         return result;

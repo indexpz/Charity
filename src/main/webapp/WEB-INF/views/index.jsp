@@ -84,10 +84,11 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
+            <c:forEach items="institutions" var="institution">
             <li>
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+                    <div class="title">${institution.name}</div>
+                    <div class="subtitle">${institution.description}</div>
                 </div>
 
                 <div class="col">
@@ -107,7 +108,7 @@
                 </div>
 
             </li>
-
+            </c:forEach>
         </ul>
     </div>
 

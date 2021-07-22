@@ -5,5 +5,5 @@ import pl.indexpz.charity.domain.model.Institution;
 
 public interface InstitutionRepository extends JpaRepository<Institution, Long> {
 
-    InstitutionRepository findInstitutionByName(String name);
+    Institution findInstitutionByName(String name);
 }
