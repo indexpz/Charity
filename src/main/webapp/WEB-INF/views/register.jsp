@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pawel
-  Date: 23/07/2021
-  Time: 00:12
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -27,58 +19,27 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
+    <form:form method="post" modelAttribute="data" action="/register">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="username" placeholder="Email" />
+            <form:errors path="username" element="div"/>
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />
+            <form:errors path="password" element="div"/>
         </div>
         <div class="form-group">
             <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <form:errors path="password" element="div"/>
         </div>
 
         <div class="form-group form-group--buttons">
             <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
 </section>
 
-<footer>
-    <div class="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
-        <form>
-            <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię" />
-            </div>
-            <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko" />
-            </div>
-
-            <div class="form-group">
-            <textarea
-                    name="message"
-                    placeholder="Wiadomość"
-                    rows="1"
-            ></textarea>
-            </div>
-
-            <button class="btn" type="submit">Wyślij</button>
-        </form>
-    </div>
-    <div class="bottom-line">
-        <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"
-            ><img src="resources/images/icon-facebook.svg"
-            /></a>
-            <a href="#" class="btn btn--small"
-            ><img src="resources/images/icon-instagram.svg"
-            /></a>
-        </div>
-    </div>
-</footer>
+<jsp:include page="header_footer/footer_main.jsp"/>
 </body>
 </html>

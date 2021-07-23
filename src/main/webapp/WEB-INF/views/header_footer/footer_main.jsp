@@ -24,6 +24,7 @@
             <a href="#" class="btn btn--small"><img src="<c:url value="/resources/images/icon-instagram.svg"/>"></a>
         </div>
     </div>
-</footer>
+    <jsp:include page="go_to_top.jsp"/>
 
+</footer>
 
