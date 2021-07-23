@@ -17,25 +17,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css" />
+
 </head>
 <body>
-<header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
-        </ul>
+<jsp:include page="header_footer/header_css.jsp"/>
+<jsp:include page="header_footer/header_login.jsp"/>
 
-        <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
-            <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
-            <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="index.html#contact" class="btn btn--without-border">Kontakt</a></li>
-        </ul>
-    </nav>
-</header>
+
 
 <section class="login-page">
     <h2>Załóż konto</h2>
@@ -84,10 +72,10 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-facebook.svg"
+            ><img src="resources/images/icon-facebook.svg"
             /></a>
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-instagram.svg"
+            ><img src="resources/images/icon-instagram.svg"
             /></a>
         </div>
     </div>

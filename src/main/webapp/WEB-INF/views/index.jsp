@@ -87,8 +87,8 @@
             <c:forEach items="institutions" var="institution">
             <li>
                 <div class="col">
-                    <div class="title">${institution.name}</div>
-                    <div class="subtitle">${institution.description}</div>
+<%--                    <div class="title">${institution.name}</div>--%>
+<%--                    <div class="subtitle">${institution.description}</div>--%>
                 </div>
 
                 <div class="col">
