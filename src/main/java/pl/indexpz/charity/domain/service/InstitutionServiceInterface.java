@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Institution;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -16,7 +17,7 @@ public interface InstitutionServiceInterface {
 
     List<Institution> getAllInstitutions();
 
-    Institution getInstitutionById(Long institutionId);
+    Optional<Institution> getInstitutionById(Long institutionId);
 
     Institution getInstitutionByName(String institutionName);
 

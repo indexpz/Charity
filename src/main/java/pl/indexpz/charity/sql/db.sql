@@ -5,3 +5,5 @@ INSERT INTO 'donations' ('name', 'quantity')
 VALUES  ('Pierwsza', 1),
         ('Druga', 2),
         ('Trzecia', 3);
+
+drop database charity_donation;

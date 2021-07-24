@@ -30,7 +30,7 @@ public class FormController {
         }
         model.addAttribute("categories", allCategories);
         log.info("" + categoryServiceInterface.getAllCategories());
-        return "/form";
+        return "form/form";
     }
 
 

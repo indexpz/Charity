@@ -10,6 +10,6 @@ public class LoginController {
 
 @GetMapping
     public String prepareLogin(){
-    return "login";
+    return "user_home_page/login";
 }
 }

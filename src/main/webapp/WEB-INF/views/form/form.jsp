@@ -16,8 +16,8 @@
 
 
 <body>
-<jsp:include page="header_footer/header_css.jsp"/>
-<jsp:include page="header_footer/header_form.jsp"/>
+<jsp:include page="../header_footer/header_css.jsp"/>
+<jsp:include page="../header_footer/header_form.jsp"/>
 
 
 <section class="form--steps">
@@ -48,7 +48,7 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                    <c:forEach items="categories" var="category">
+                    <c:forEach items="${categories}" var="category1" varStatus="sort">
                         <div class="form-group form-group--checkbox">
                             <label>
                                 <input
@@ -57,52 +57,29 @@
                                         value="clothes-to-use"
                                 />
                                 <span class="checkbox"></span>
-                                <span class="description">${category.name}</span>
+<%--                                <form:checkbox path="category" value="id"/>--%>
+                                <span class="description">${category1.name}</span>
 
                             </label>
                         </div>
                     </c:forEach>
-
                 <div class="form-group form-group--checkbox">
                     <label>
                         <input
                                 type="checkbox"
                                 name="categories"
-                                value="clothes-useless"
+                                value="clothes-to-use"
                         />
                         <span class="checkbox"></span>
-                        <span class="description">ubrania, do wyrzucenia</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="toys"/>
-                        <span class="checkbox"></span>
-                        <span class="description">zabawki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="books"/>
-                        <span class="checkbox"></span>
-                        <span class="description">książki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="other"/>
-                        <span class="checkbox"></span>
                         <span class="description">inne</span>
+
                     </label>
                 </div>
-
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="submit" class="btn next-step">Dalej</button>
                 </div>
             </div>
+
 
 
             <!-- STEP 2 -->
@@ -264,12 +241,12 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
-        </form:form>
     </div>
+    </form:form>
 </section>
 
 
-<jsp:include page="header_footer/footer_main.jsp"/>
-<jsp:include page="header_footer/footer_js.jsp"/>
+<jsp:include page="../header_footer/footer_main.jsp"/>
+<jsp:include page="../header_footer/footer_js.jsp"/>
 </body>
 </html>

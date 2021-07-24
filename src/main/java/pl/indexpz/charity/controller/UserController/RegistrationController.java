@@ -29,16 +29,16 @@ public class RegistrationController {
     @GetMapping
     public String prepareRegistration(Model model){
         model.addAttribute("data", new UserDTO());
-        return "register";
+        return "register_login/register";
     }
 
     @PostMapping
     public String processRegistration(@ModelAttribute("data") @Valid UserDTO data, BindingResult bindings){
         if(bindings.hasErrors()){
-            return "register";
+            return "register_login/register";
         }
 
         authenticationService.registerUser(userConverter.toUser(data.getUsername(), data.getPassword()));
-        return "redirect:/login";
+        return "redirect:/register_login/login";
     }
 }

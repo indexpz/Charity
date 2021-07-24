@@ -9,37 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-
 </head>
 <body>
-<jsp:include page="header_footer/header_css.jsp"/>
-<jsp:include page="header_footer/header_login.jsp"/>
-
-
+<jsp:include page="../header_footer/header_css.jsp"/>
+<jsp:include page="../header_footer/header_login.jsp"/>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
-    <form:form method="post" modelAttribute="data" action="/register">
+    <h2>Zaloguj się</h2>
+    <form method="post" action="/login">
         <div class="form-group">
-            <input type="email" name="username" placeholder="Email" />
-            <form:errors path="username" element="div"/>
+            <input type="email" name="email" placeholder="Email" />
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />
-            <form:errors path="password" element="div"/>
-        </div>
-        <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
-            <form:errors path="password" element="div"/>
+            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <a href="#" class="btn btn--without-border">Załóż konto</a>
+            <button class="btn" type="submit">Zaloguj się</button>
         </div>
-    </form:form>
+    </form>
 </section>
 
-<jsp:include page="header_footer/footer_main.jsp"/>
+<jsp:include page="../header_footer/footer_main.jsp"/>
 </body>
 </html>

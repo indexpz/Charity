@@ -9,6 +9,7 @@ import pl.indexpz.charity.domain.service.InstitutionServiceInterface;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +29,8 @@ public class InstitutionService implements InstitutionServiceInterface {
     }
 
     @Override
-    public Institution getInstitutionById(Long institutionId) {
-        return institutionRepository.findById(institutionId).orElseThrow((() -> new ResourceNotFoundException("Institution with id " + institutionId + " not exist.")));
+    public Optional<Institution> getInstitutionById(Long institutionId) {
+        return institutionRepository.findById(institutionId);
     }
 
     @Override
@@ -40,15 +41,15 @@ public class InstitutionService implements InstitutionServiceInterface {
 
     @Override
     public void updateInstitution(Institution institutionToUpdate) {
-        Institution institution = getInstitutionById((institutionToUpdate.getId()));
-        institution.setName(institutionToUpdate.getName());
-        institution.setDescription(institutionToUpdate.getDescription());
-        institutionRepository.save(institution);
+//        Institution institution = getInstitutionById((institutionToUpdate.getId()));
+//        institution.setName(institutionToUpdate.getName());
+//        institution.setDescription(institutionToUpdate.getDescription());
+//        institutionRepository.save(institution);
     }
 
     @Override
     public void deleteInstitution(Institution institutionToDelete) {
-        Institution institution = getInstitutionById(institutionToDelete.getId());
-        institutionRepository.delete(institution);
+//        Institution institution = getInstitutionById(institutionToDelete.getId());
+//        institutionRepository.delete(institution);
     }
 }

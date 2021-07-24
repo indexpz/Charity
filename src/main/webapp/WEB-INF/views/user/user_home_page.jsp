@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<jsp:include page="header_footer/header_css.jsp"/>
-<jsp:include page="header_footer/header_main_navi.jsp"/>
+<jsp:include page="../header_footer/header_css.jsp"/>
+<jsp:include page="../header_footer/header_main_navi.jsp"/>
 
 <section class="stats">
     <div class="container container--85">
@@ -61,7 +61,6 @@
         </div>
     </div>
 
-    <a href="/register"class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us" id="about-us">
@@ -84,25 +83,38 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institutions}" var="institution1" >
-            <li>
-                <c:forEach items="${institutions}" var="institution2" varStatus="loop">
-                <div class="col" >
-                    <div class="title">${institution2.name} </div>
-                    <div class="subtitle">${institution2.description}</div>
-                </div>
-                </c:forEach>
-            </li>
+            <c:forEach items="institutions" var="institution">
+                <li>
+                    <div class="col">
+                            <%--                    <div class="title">${institution.name}</div>--%>
+                            <%--                    <div class="subtitle">${institution.description}</div>--%>
+                    </div>
 
+                    <div class="col">
+                        <div class="title">Fundacja "A kogo"</div>
+                        <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
+                    </div>
+                </li>
 
+                <li>
+                    <div class="col">
+                        <div class="title">Fundacja “Dla dzieci"</div>
+                        <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
+                    </div>
+                    <div class="col">
+                        <div class="title">Fundacja “Bez domu”</div>
+                        <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
+                    </div>
+
+                </li>
             </c:forEach>
         </ul>
     </div>
 
 </section>
 
-<jsp:include page="header_footer/footer_main.jsp"/>
-<jsp:include page="header_footer/footer_js.jsp"/>
+<jsp:include page="../header_footer/footer_main.jsp"/>
+<jsp:include page="../header_footer/footer_js.jsp"/>
 
 
 </body>

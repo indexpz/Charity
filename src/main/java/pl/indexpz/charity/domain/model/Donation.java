@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Donation {
     @NotBlank
     private String name;
     @Column(nullable = false)
-    @NotBlank
+    @NotNull
     private Integer quantity;
     @Column
     private String street;
