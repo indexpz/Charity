@@ -52,6 +52,7 @@ public class DonationService implements DonationServiceInterface {
             donation.setStreet(donationToUpdate.getStreet());
             donation.setCity(donationToUpdate.getCity());
             donation.setZipCode(donationToUpdate.getZipCode());
+            donation.setPhone(donationToUpdate.getPhone());
             donation.setPickUpDate(donationToUpdate.getPickUpDate());
             donation.setPickUpTime(donationToUpdate.getPickUpTime());
             donation.setPickUpComment(donationToUpdate.getPickUpComment());

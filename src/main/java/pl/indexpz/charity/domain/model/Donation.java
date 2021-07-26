@@ -35,6 +35,8 @@ public class Donation {
     private String city;
     @Column
     private String zipCode;
+    @Column
+    private String phone;
     @Column(name="pick_up_date")
     private LocalDate pickUpDate;
     @Column(name="pick_up_time")

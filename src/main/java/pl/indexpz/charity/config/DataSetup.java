@@ -51,9 +51,9 @@ public class DataSetup {
         createCategoryIfNotExist(3L, "zabawki");
         createCategoryIfNotExist(4L, "książki");
 
-        createDonationIfNotExist(1L, "Pierwsza darowizna", 1, "Pierwsza", null, null, null, null, null);
-        createDonationIfNotExist(2L, "Druga darowizna", 2, "Druga", null, null, null, null, null);
-        createDonationIfNotExist(3L, "Trzecia darowizna", 3, "Trzecia", null, null, null, null, null);
+        createDonationIfNotExist(1L, "Pierwsza darowizna", 1, "Pierwsza", null, null, null,null, null, null);
+        createDonationIfNotExist(2L, "Druga darowizna", 2, "Druga", null, null, null, null, null, null);
+        createDonationIfNotExist(3L, "Trzecia darowizna", 3, "Trzecia", null, null, null,null, null, null);
 
 
 
@@ -74,11 +74,11 @@ public class DataSetup {
 
     }
 
-    private void createDonationIfNotExist(Long id, String name, Integer quantity, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
+    private void createDonationIfNotExist(Long id, String name, Integer quantity, String street, String city, String zipCode, String phone, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
         if(donationServiceInterface.getDonationById(id).isPresent()){
             log.debug("Donation o id {} istnieje w bazie danych. Nie potrzeba dodawać", id);
         }else{
-            Donation donation = new Donation(null, name, quantity, street, city, zipCode, pickUpDate, pickUpTime, pickUpComment, null, null);
+            Donation donation = new Donation(null, name, quantity, street, city, zipCode, phone, pickUpDate, pickUpTime, pickUpComment, null, null);
             donationServiceInterface.addDonation(donation);
             log.debug("Dodano Doantion do bd {}", donation);
         }
