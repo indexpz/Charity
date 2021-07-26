@@ -7,6 +7,7 @@ import pl.indexpz.charity.domain.model.Donation;
 import pl.indexpz.charity.domain.model.Institution;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -17,7 +18,7 @@ public interface DonationServiceInterface {
 
     List<Donation> getAllDonations();
 
-    Donation getDonationById(Long donationId);
+    Optional<Donation> getDonationById(Long donationId);
 
     Donation getDonationByInstitution(Institution institutionId);
 

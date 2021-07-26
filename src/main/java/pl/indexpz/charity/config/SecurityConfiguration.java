@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/forms/user", "/forms/user/", "/forms/user/*").hasAnyRole("USER")
                 .antMatchers("/resources/css", "/resources/css/**").permitAll()
                 .antMatchers("/resources/images", "/resources/images/**").permitAll()
+                .antMatchers("/resources", "/resources/**").permitAll()
                 .antMatchers("/resources/js", "/resources/js/**").permitAll()
                 .antMatchers("/form", "/form/**").permitAll()
                 .antMatchers("/form-confirmation", "/form-confirmation/**").permitAll()

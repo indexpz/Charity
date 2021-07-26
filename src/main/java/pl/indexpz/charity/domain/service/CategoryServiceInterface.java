@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -16,7 +17,7 @@ public interface CategoryServiceInterface {
 
     List<Category> getAllCategories();
 
-    Category getCategoryById(Long categoryId);
+    Optional<Category> getCategoryById(Long categoryId);
 
     Category getCategoryByName(String categoryName);
 

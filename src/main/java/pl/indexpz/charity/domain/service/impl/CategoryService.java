@@ -9,6 +9,7 @@ import pl.indexpz.charity.domain.service.CategoryServiceInterface;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor //zamiast konstruktora
@@ -28,8 +29,8 @@ public class CategoryService implements CategoryServiceInterface {
     }
 
     @Override
-    public Category getCategoryById(Long categoryId) {
-        return categoryRepository.findById(categoryId).orElseThrow((() -> new ResourceNotFoundException("Category with id " + categoryId + " not exist.")));
+    public Optional<Category> getCategoryById(Long categoryId) {
+        return categoryRepository.findById(categoryId);
     }
 
     @Override
@@ -40,14 +41,27 @@ public class CategoryService implements CategoryServiceInterface {
 
     @Override
     public void updateCategory(Category categoryToUpdate) {
-        Category category = getCategoryById(categoryToUpdate.getId());
-        category.setName(category.getName());
-        categoryRepository.save(category);
+        Optional<Category> optionalCategory = getCategoryById(categoryToUpdate.getId());
+        if(optionalCategory.isPresent()){
+            Category category = optionalCategory.get();
+            category.setName(category.getName());
+            categoryRepository.save(category);
+        }else{
+            Category category = new Category();
+        }
+
+
     }
 
     @Override
     public void deleteCategory(Category categoryToDelete) {
-        Category category = getCategoryById(categoryToDelete.getId());
-        categoryRepository.delete(category);
+        Optional<Category> optionalCategory = getCategoryById(categoryToDelete.getId());
+        if(optionalCategory.isPresent()){
+            Category category = optionalCategory.get();
+            categoryRepository.delete(category);
+        }else{
+            Category category = new Category();
+        }
+
     }
 }

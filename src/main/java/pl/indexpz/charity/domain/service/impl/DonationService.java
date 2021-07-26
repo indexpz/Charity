@@ -11,6 +11,7 @@ import pl.indexpz.charity.domain.service.DonationServiceInterface;
 import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor //zamiast konstruktora
@@ -31,8 +32,8 @@ public class DonationService implements DonationServiceInterface {
     }
 
     @Override
-    public Donation getDonationById(Long donationId) {
-        return donationRepository.findById(donationId).orElseThrow((() -> new ResourceNotFoundException("Donation with id " + donationId + " not exist.")));
+    public Optional<Donation> getDonationById(Long donationId) {
+        return donationRepository.findById(donationId);
     }
 
     @Override
@@ -43,12 +44,33 @@ public class DonationService implements DonationServiceInterface {
 
     @Override
     public void updateDonation(Donation donationToUpdate) {
-
+        Optional<Donation> optionalDonation = getDonationById(donationToUpdate.getId());
+        if (optionalDonation.isPresent()) {
+            Donation donation = optionalDonation.get();
+            donation.setQuantity(donationToUpdate.getQuantity());
+            donation.setName(donationToUpdate.getName());
+            donation.setStreet(donationToUpdate.getStreet());
+            donation.setCity(donationToUpdate.getCity());
+            donation.setZipCode(donationToUpdate.getZipCode());
+            donation.setPickUpDate(donationToUpdate.getPickUpDate());
+            donation.setPickUpTime(donationToUpdate.getPickUpTime());
+            donation.setPickUpComment(donationToUpdate.getPickUpComment());
+            donationRepository.save(donation);
+        }else {
+            Donation donation = new Donation();
     }
+
+}
 
     @Override
     public void deleteDonation(Donation donationToDelete) {
-
+        Optional<Donation> optionalDonation = getDonationById(donationToDelete.getId());
+        if (optionalDonation.isPresent()) {
+            Donation donation = optionalDonation.get();
+            donationRepository.delete(donation);
+        }else {
+            Donation donation = new Donation();
+        }
     }
 
     @Override
@@ -59,7 +81,7 @@ public class DonationService implements DonationServiceInterface {
     @Override
     public int getNumberOfBags() {
         int result = 0;
-        for (Donation d: getAllDonations()) {
+        for (Donation d : getAllDonations()) {
             result += d.getQuantity();
         }
         return result;

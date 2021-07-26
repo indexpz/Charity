@@ -64,21 +64,20 @@ public class DataSetup {
     }
 
     private void createCategoryIfNotExist(Long id, String name) {
-        try {
-            categoryServiceInterface.getCategoryById(id);
+        if(categoryServiceInterface.getCategoryById(id).isPresent()){
             log.debug("Category o id {} istnieje w bazie danych. Nie potrzeba dodawać", id);
-        } catch (ResourceNotFoundException e) {
+        }else{
             Category category = new Category(id, name);
             categoryServiceInterface.addCategory(category);
             log.debug("Dodano Category do bd {}", category);
         }
+
     }
 
     private void createDonationIfNotExist(Long id, String name, Integer quantity, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
-        try {
-            donationServiceInterface.getDonationById(id);
+        if(donationServiceInterface.getDonationById(id).isPresent()){
             log.debug("Donation o id {} istnieje w bazie danych. Nie potrzeba dodawać", id);
-        } catch (ResourceNotFoundException e) {
+        }else{
             Donation donation = new Donation(null, name, quantity, street, city, zipCode, pickUpDate, pickUpTime, pickUpComment, null, null);
             donationServiceInterface.addDonation(donation);
             log.debug("Dodano Doantion do bd {}", donation);

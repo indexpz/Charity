@@ -84,9 +84,11 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institutions}" var="institution1" >
+            <c:forEach begin="0" end="3" items="${institutions}" var="institution1" varStatus="loop">
+
             <li>
-                <c:forEach items="${institutions}" var="institution2" varStatus="loop">
+                <c:forEach items="${institutions}" var="institution2" >
+                    ${loop.index}
                 <div class="col" >
                     <div class="title">${institution2.name} </div>
                     <div class="subtitle">${institution2.description}</div>

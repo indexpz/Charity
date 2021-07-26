@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.charity.domain.model.Institution;
 import pl.indexpz.charity.domain.repository.InstitutionRepository;
 import pl.indexpz.charity.domain.service.InstitutionServiceInterface;
-import pl.indexpz.charity.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,15 +40,26 @@ public class InstitutionService implements InstitutionServiceInterface {
 
     @Override
     public void updateInstitution(Institution institutionToUpdate) {
-//        Institution institution = getInstitutionById((institutionToUpdate.getId()));
-//        institution.setName(institutionToUpdate.getName());
-//        institution.setDescription(institutionToUpdate.getDescription());
-//        institutionRepository.save(institution);
+        Optional<Institution> optionalInstitution = getInstitutionById(institutionToUpdate.getId());
+        if(optionalInstitution.isPresent()){
+            Institution institution = optionalInstitution.get();
+            institution.setName(institutionToUpdate.getName());
+            institution.setDescription(institutionToUpdate.getDescription());
+            institutionRepository.save(institution);
+        }else {
+            Institution institution = new Institution();
+        }
+
     }
 
     @Override
     public void deleteInstitution(Institution institutionToDelete) {
-//        Institution institution = getInstitutionById(institutionToDelete.getId());
-//        institutionRepository.delete(institution);
+        Optional<Institution> optionalInstitution = getInstitutionById(institutionToDelete.getId());
+        if(optionalInstitution.isPresent()){
+            Institution institution = optionalInstitution.get();
+            institutionRepository.delete(institution);
+        }else{
+            Institution institution = new Institution();
+        }
     }
 }
