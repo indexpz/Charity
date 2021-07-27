@@ -19,10 +19,12 @@ import pl.indexpz.charity.domain.service.InstitutionServiceInterface;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/form")
+//@RequestMapping("/form")
 @Slf4j
 @RequiredArgsConstructor
 public class FormController {
@@ -31,41 +33,58 @@ public class FormController {
     private final DonationServiceInterface donationServiceInterface;
     private final InstitutionServiceInterface institutionServiceInterface;
 
-//    @ModelAttribute(name = "cate")
-//    public List<String> meterUnit() {
-//        List<Category> categoryList =  categoryServiceInterface.getAllCategories();
-//        List<String> nameList = new ArrayList<>();
-//        for (Category c : categoryList             ) {
-//            nameList.add(c.getName());
-//        }
-//        return nameList;
-//    }
 
-    @GetMapping
-    public String prepareCategoryForm(HttpSession session, Model model) {
+    @GetMapping("/form")
+    public String prepareForm(HttpSession session, Model model) {
         List<Category> allCategories = categoryServiceInterface.getAllCategories();
+        allCategories.sort(Comparator.comparing(Category::getId));
         List<Institution> allInstitution = institutionServiceInterface.getAllInstitutions();
-
+        Donation donation = new Donation();
 
         model.addAttribute("categories", allCategories);
         model.addAttribute("institutions", allInstitution);
-        model.addAttribute("donations", new Donation());
-        log.info("" + categoryServiceInterface.getAllCategories());
+        model.addAttribute("donation", donation);
 
-        Donation donation = new Donation();
         session.setAttribute("saveDonation", donation);
+
+        log.info("" + categoryServiceInterface.getAllCategories());
+        log.info("" + donation);
         return "form/form";
     }
 
 
-    @PostMapping
-    public String processCategoryForm(@Valid Controller controller, BindingResult bindings){
-        if(bindings.hasErrors()){
+    @PostMapping("/form")
+    public String procesForm(@Valid Donation donation, BindingResult bindings, HttpSession session) {
+        if (bindings.hasErrors()) {
             return "form/form";
         }
+        session.getAttribute("saveDonation");
 
+        return "form/form_summary";
+    }
 
-        return "form/form";
+    @PostMapping("/form_summary")
+    public String processFormSummary(@Valid Donation donation, BindingResult bindings, HttpSession session, Model model) {
+        if (bindings.hasErrors()) {
+            return "form/form";
+        }
+        List<Category> categoriesList = donation.getCategories();
+        String institution = donationServiceInterface.getInstitutionName(donation);
+        System.out.println(institution);
+        session.setAttribute("saveDonation", donation);
+        model.addAttribute("donation", donation);
+//        model.addAttribute("donationCategories", categoriesList);
+        model.addAttribute("donationInstitution", institution);
+//        log.info("instytucja" + " " +institution);
+//        log.info(""+categoriesList);
+        return "form/form_confirmation";
+    }
+
+    @GetMapping("/form_confirmation")
+    public String processSaveToDb( HttpSession session){
+        Donation donation = (Donation)session.getAttribute("saveDonation");
+        donationServiceInterface.addDonation(donation);
+        return "redirect:/index";
     }
 
 }

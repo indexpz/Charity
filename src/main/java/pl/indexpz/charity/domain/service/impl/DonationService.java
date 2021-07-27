@@ -48,7 +48,6 @@ public class DonationService implements DonationServiceInterface {
         if (optionalDonation.isPresent()) {
             Donation donation = optionalDonation.get();
             donation.setQuantity(donationToUpdate.getQuantity());
-            donation.setName(donationToUpdate.getName());
             donation.setStreet(donationToUpdate.getStreet());
             donation.setCity(donationToUpdate.getCity());
             donation.setZipCode(donationToUpdate.getZipCode());
@@ -73,6 +72,12 @@ public class DonationService implements DonationServiceInterface {
             Donation donation = new Donation();
         }
     }
+
+    @Override
+    public String getInstitutionName(Donation donation) {
+        return donation.getInstitution().getName();
+    }
+
 
     @Override
     public int getNumberOfDonations() {

@@ -3,4 +3,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<a class="gototopbtn" href="#"> <i class="fa-solid fa-circle-up"></i> </a>
+<a class="gototopbtn" href="#"> <i class="fa-solid fa-arrow-up"></i> </a>

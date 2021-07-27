@@ -26,6 +26,8 @@ public interface DonationServiceInterface {
 
     public void deleteDonation(Donation donationToDelete);
 
+    String getInstitutionName(Donation donation);
+
     int getNumberOfDonations();
 
     int getNumberOfBags();

@@ -17,9 +17,10 @@ public interface CategoryServiceInterface {
 
     List<Category> getAllCategories();
 
-    Optional<Category> getCategoryById(Long categoryId);
+    Optional<Category> getCategoryById(Long Id);
 
-    Category getCategoryByName(String categoryName);
+    Category getCategoryByName(String name);
+
 
     public void updateCategory(Category categoryToUpdate);
 

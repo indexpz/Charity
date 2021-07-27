@@ -25,11 +25,8 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String prepareHome(HttpSession session, Model model) {
+    public String prepareHome( Model model) {
         log.info("Start home/index.jsp");
-//        Donation donation = new Donation();
-//        session.setAttribute("saveDonation", donation);
-
 
         model.addAttribute("donationsSize", donationServiceInterface.getNumberOfDonations());
         model.addAttribute("donationQuantity", donationServiceInterface.getNumberOfBags());
@@ -38,8 +35,8 @@ public class HomeController {
     }
 
     @PostMapping
-    public String dHome(HttpSession session) {
-        session.getAttribute("saveDonation");
+    public String processHome() {
+
         return "index";
     }
 

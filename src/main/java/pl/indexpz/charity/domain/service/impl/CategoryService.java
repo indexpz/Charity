@@ -39,6 +39,8 @@ public class CategoryService implements CategoryServiceInterface {
         return category;
     }
 
+
+
     @Override
     public void updateCategory(Category categoryToUpdate) {
         Optional<Category> optionalCategory = getCategoryById(categoryToUpdate.getId());
