@@ -69,22 +69,26 @@ public class FormController {
             return "form/form";
         }
         List<Category> categoriesList = donation.getCategories();
-        String institution = donationServiceInterface.getInstitutionName(donation);
+        Institution institution = donation.getInstitution();
         System.out.println(institution);
         session.setAttribute("saveDonation", donation);
         model.addAttribute("donation", donation);
-//        model.addAttribute("donationCategories", categoriesList);
-        model.addAttribute("donationInstitution", institution);
+        model.addAttribute("donationCategories", categoriesList);
+        model.addAttribute("donationInstitutionName", institution.getName());
 //        log.info("instytucja" + " " +institution);
 //        log.info(""+categoriesList);
-        return "form/form_confirmation";
+        return "/form_confirmation";
     }
 
     @GetMapping("/form_confirmation")
-    public String processSaveToDb( HttpSession session){
-        Donation donation = (Donation)session.getAttribute("saveDonation");
+    public String prepareSaveToDb(HttpSession session) {
+        Donation donation = (Donation) session.getAttribute("saveDonation");
         donationServiceInterface.addDonation(donation);
-        return "redirect:/index";
+        return "redirect:/";
     }
-
+//
+//    @PostMapping("/form_confirmation")
+//    public String  processSaveToDb(){
+//        return "redirect:/";
+//    }
 }
