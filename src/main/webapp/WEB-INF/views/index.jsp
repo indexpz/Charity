@@ -86,30 +86,22 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-<%--                        <c:forEach begin="0" end="3" items="${institutions}" var="institution1" varStatus="loop">--%>
 
 
-            <c:forEach items="${institutions}" var="institution" varStatus="status" >
-<%--                                <jsp:useBean id="status" type="javax.servlet.jsp.jstl.core.LoopTagStatus"/>--%>
-<%--                                <c:choose>--%>
-<%--                                <c:when test="<%=status.getCount()%2==0%>">--%>
-<%--                                   <c:set value="<li>"></c:set>--%>
-<%--                                </c:when>--%>
-                <li>
-                    <div class="col">
-                        <div class="title">${institution.name} </div>
-                        <div class="subtitle">${institution.description}</div>
-                    </div>
-                </li>
-<%--                                <c:otherwise>--%>
-<%--                                    <c:set value="</li>"></c:set>--%>
-<%--                                </c:otherwise>--%>
-<%--                                </c:choose>--%>
-<%--                                <c:out value="${institution}"/>--%>
+            <c:forEach items="${institutions}" var="institution" varStatus="status">
+
+
+                ${status.count%2==0 ? "" : "<li>"}
+                <div class="col">
+                    <div class="title">${institution.name} </div>
+                    <div class="subtitle">${institution.description}</div>
+                </div>
+
+                ${status.count%2!=0 ? "" : "</li>"}
+
             </c:forEach>
 
 
-            <%--            </c:forEach>--%>
         </ul>
     </div>
 

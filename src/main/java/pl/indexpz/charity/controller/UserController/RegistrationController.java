@@ -39,6 +39,6 @@ public class RegistrationController {
         }
 
         authenticationService.registerUser(userConverter.toUser(data.getUsername(), data.getPassword()));
-        return "redirect:/register_login/login";
+        return "redirect:/login";
     }
 }

@@ -70,17 +70,17 @@ public class FormController {
         }
         List<Category> categoriesList = donation.getCategories();
         Institution institution = donation.getInstitution();
-        System.out.println(institution);
+
         session.setAttribute("saveDonation", donation);
         model.addAttribute("donation", donation);
         model.addAttribute("donationCategories", categoriesList);
         model.addAttribute("donationInstitutionName", institution.getName());
 //        log.info("instytucja" + " " +institution);
 //        log.info(""+categoriesList);
-        return "/form_confirmation";
+        return "form/form_summary";
     }
 
-    @GetMapping("/form_confirmation")
+    @PostMapping("/form_confirmation")
     public String prepareSaveToDb(HttpSession session) {
         Donation donation = (Donation) session.getAttribute("saveDonation");
         donationServiceInterface.addDonation(donation);

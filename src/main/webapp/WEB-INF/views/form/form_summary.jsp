@@ -15,7 +15,7 @@
         <div class="form--steps-container">
 <%--            <div class="form--steps-counter"> <span></span></div>--%>
             <!-- STEP 6 -->
-    <form:form action="/form_summary" method="post" modelAttribute="donation">
+    <form:form action="/form_confirmation" method="post" modelAttribute="donation">
 
     <div data-step="5" class="active">
                 <h3>Podsumowanie Twojej darowizny</h3>
@@ -35,7 +35,7 @@
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >${institution}</span
+                                >${donationInstitutionName}</span
                                 >
                             </li>
                         </ul>
@@ -65,12 +65,13 @@
                 </div>
 
                 <div class="form-group form-group--buttons">
-                  <a href="/form">  <button type="button"  class="btn prev-step">Wstecz</button></a>
+                 <button type="button" href="/form" class="btn prev-step">Wstecz</button>
                     <button type="submit" class="btn">Potwierdzam</button>
+                    </form:form>
                 </div>
             </div>
         </div>
-    </form:form>
+
     </div>
 </section>
 
