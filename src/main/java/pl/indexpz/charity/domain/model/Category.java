@@ -25,5 +25,4 @@ public class Category {
     @Column(nullable = false, unique = true)
     @NotBlank
     private String name;
-
 }
